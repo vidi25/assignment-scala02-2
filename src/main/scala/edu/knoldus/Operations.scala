@@ -40,16 +40,16 @@ class Operations {
           val rnd = new scala.util.Random
           val subjects = list.keySet.toList
           val sub = subjects(rnd.nextInt(subjects.length))
-          if (subjects.contains(sub)) {
+          if ( noOfTimes < 6 ) {
             val map = updateMap(list, sub)
             writeBlogRecursive(map, noOfTimes + 1)
           }
           else {
-            throw new Exception("subject not found")
+            list
           }
         }
-      val blogList = writeBlogRecursive(blogList,1)
-      val favSubject = blogList.maxBy{case (_,blogCount) => blogCount }
+      val blogs = writeBlogRecursive(blogList,1)
+      val favSubject = blogs.maxBy{case (_,blogCount) => blogCount }
       s"Favourite subject is ${favSubject._1}"
     }
   }
